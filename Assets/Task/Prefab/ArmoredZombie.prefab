@@ -1063,6 +1063,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1279015807120100706}
   - component: {fileID: 8012789615978961911}
+  - component: {fileID: -7512110978454527325}
+  - component: {fileID: 4230910870930165154}
   m_Layer: 0
   m_Name: ArmoredZombie
   m_TagString: Player
@@ -1108,6 +1110,48 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &-7512110978454527325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965542375936710267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a32ac9c620bcb14a9fa54a8b037f4f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animation: {fileID: 8012789615978961911}
+  idleClip: {fileID: 7400000, guid: ec82f8817523b104a90d8631a4731fd2, type: 3}
+  walkClip: {fileID: 7400000, guid: 36f951038cccf164c8901048aeb4fb9e, type: 3}
+  attackClip: {fileID: 7400000, guid: d334d382f7a508045b0a84857aa72218, type: 3}
+  dieClip: {fileID: 7400000, guid: 3d70d4e1320891e4ba93a693d355fa32, type: 3}
+  health: 1
+  speed: 2
+  attackDamage: 10
+  scoreValue: 10
+--- !u!65 &4230910870930165154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965542375936710267}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.8621027, z: 1}
+  m_Center: {x: 0, y: 0.92530143, z: 0}
 --- !u!1 &7014319629304018821
 GameObject:
   m_ObjectHideFlags: 0

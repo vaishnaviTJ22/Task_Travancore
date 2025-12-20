@@ -171,6 +171,8 @@ GameObject:
   m_Component:
   - component: {fileID: 662569445586389062}
   - component: {fileID: 5290974507537219693}
+  - component: {fileID: 1441953272451194802}
+  - component: {fileID: 7627450698289470820}
   m_Layer: 0
   m_Name: StandardZombie
   m_TagString: Player
@@ -209,13 +211,55 @@ Animation:
   m_Animation: {fileID: 7400000, guid: ec82f8817523b104a90d8631a4731fd2, type: 3}
   m_Animations:
   - {fileID: 7400000, guid: ec82f8817523b104a90d8631a4731fd2, type: 3}
-  - {fileID: 7400000, guid: 36f951038cccf164c8901048aeb4fb9e, type: 3}
-  - {fileID: 7400000, guid: d2e7214e9310a30459325460d4d47f06, type: 3}
-  - {fileID: 7400000, guid: 19d74c2130de9ce40ac7e4c763504672, type: 3}
+  - {fileID: 7400000, guid: 06689d51a8d73824486a40ff8be6851d, type: 3}
+  - {fileID: 7400000, guid: d334d382f7a508045b0a84857aa72218, type: 3}
+  - {fileID: 7400000, guid: 3d70d4e1320891e4ba93a693d355fa32, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1441953272451194802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006158741158126349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 965ddd80828080946a561d63c5cdc510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animation: {fileID: 5290974507537219693}
+  idleClip: {fileID: 7400000, guid: ec82f8817523b104a90d8631a4731fd2, type: 3}
+  walkClip: {fileID: 7400000, guid: 06689d51a8d73824486a40ff8be6851d, type: 3}
+  attackClip: {fileID: 7400000, guid: d334d382f7a508045b0a84857aa72218, type: 3}
+  dieClip: {fileID: 7400000, guid: 3d70d4e1320891e4ba93a693d355fa32, type: 3}
+  health: 1
+  speed: 2
+  attackDamage: 10
+  scoreValue: 10
+--- !u!65 &7627450698289470820
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006158741158126349}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.8621027, z: 1}
+  m_Center: {x: 0, y: 0.92530143, z: 0}
 --- !u!1 &2266041105916092250
 GameObject:
   m_ObjectHideFlags: 0
