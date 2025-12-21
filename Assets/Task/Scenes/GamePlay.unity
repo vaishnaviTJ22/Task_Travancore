@@ -3156,6 +3156,7 @@ MonoBehaviour:
   healthSlider: {fileID: 1884069658}
   gameOverPanel: {fileID: 2052333011}
   finalScoreText: {fileID: 928210913}
+  highScoreText: {fileID: 2019517163}
   waveNumberText: {fileID: 1258787193}
   restartBtn: {fileID: 260129439}
   homeBtn: {fileID: 1537811627}
@@ -3734,6 +3735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1649513720}
   - component: {fileID: 1649513719}
+  - component: {fileID: 1649513721}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -3753,11 +3755,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eedf8892190712c4dbd5309176aef7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardEnemyPrefab: {fileID: 2006158741158126349, guid: 8918a2e65e641e9438081dbce9e13c49, type: 3}
-  armoredEnemyPrefab: {fileID: 6965542375936710267, guid: 251314b90ed570f4bb5162d78b460217, type: 3}
   spawnRadius: 8
   minSpawnDistance: 5
   spawnDelay: 2
+  baseEnemyCount: 4
+  enemyIncreasePerWave: 3
 --- !u!4 &1649513720
 Transform:
   m_ObjectHideFlags: 0
@@ -3773,6 +3775,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1649513721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649513718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c84adcba2ffc54e83879867cb6dc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardEnemyPrefab: {fileID: 2006158741158126349, guid: 8918a2e65e641e9438081dbce9e13c49, type: 3}
+  armoredEnemyPrefab: {fileID: 6965542375936710267, guid: 251314b90ed570f4bb5162d78b460217, type: 3}
+  initialPoolSize: 5
+  poolGrowthPerWave: 5
 --- !u!1 &1674990010
 GameObject:
   m_ObjectHideFlags: 0

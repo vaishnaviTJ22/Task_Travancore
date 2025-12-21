@@ -1,14 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject standardEnemyPrefab;
-    public GameObject armoredEnemyPrefab;
-
     public float spawnRadius = 10f;
     public float minSpawnDistance = 3f;
     public float spawnDelay = 2f;
+
+    [Header("Wave Settings")]
+    public int baseEnemyCount = 3;
+    public int enemyIncreasePerWave = 2;
+
     private int waveNumber = 1;
 
     private void Start()
@@ -20,18 +22,22 @@ public class EnemySpawner : MonoBehaviour
     {
         while (!GameManager.Instance.isGameOver)
         {
-            int enemyCount = waveNumber + 4;
+            UIManager.Instance.UpdateWaveUI(waveNumber);
+            yield return new WaitForSeconds(2f);
 
-            for (int i = 0; i < enemyCount; i++)
+            int enemiesToSpawn = baseEnemyCount + (waveNumber - 1) * enemyIncreasePerWave;
+
+            for (int i = 0; i < enemiesToSpawn; i++)
             {
                 SpawnEnemy();
                 yield return new WaitForSeconds(spawnDelay);
             }
 
             waveNumber++;
-            UIManager.Instance.UpdateWaveUI(waveNumber);
-            yield return new WaitForSeconds(2f);
             spawnDelay = Mathf.Max(0.5f, spawnDelay - 0.2f);
+
+            EnemyPoolManager.Instance.ExpandPool(3);
+
             yield return new WaitForSeconds(2f);
         }
     }
@@ -41,10 +47,11 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPos = GetRandomSpawnPosition();
         spawnPos.y = 0;
 
-        GameObject enemyPrefab =
-            Random.value > 0.7f ? armoredEnemyPrefab : standardEnemyPrefab;
+        bool isArmored = Random.value > 0.7f;
+        GameObject enemy = EnemyPoolManager.Instance.GetEnemy(isArmored);
 
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        enemy.transform.position = spawnPos;
+        enemy.transform.rotation = Quaternion.identity;
     }
 
     Vector3 GetRandomSpawnPosition()
@@ -52,6 +59,10 @@ public class EnemySpawner : MonoBehaviour
         Vector2 randomCircle = Random.insideUnitCircle.normalized;
         float distance = Random.Range(minSpawnDistance, spawnRadius);
 
-        return new Vector3(randomCircle.x * distance, 0, randomCircle.y * distance);
+        return new Vector3(
+            randomCircle.x * distance,
+            0,
+            randomCircle.y * distance
+        );
     }
 }

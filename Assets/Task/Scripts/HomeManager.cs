@@ -17,6 +17,7 @@ public class HomeManager : MonoBehaviour
 
     void Play()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("GamePlay");
     }
     void Quit()
