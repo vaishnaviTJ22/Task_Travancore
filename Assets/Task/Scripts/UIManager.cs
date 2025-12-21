@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -10,12 +12,28 @@ public class UIManager : MonoBehaviour
     public Slider healthSlider;
     public GameObject gameOverPanel;
     public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI waveNumberText;
+
+    public Button restartBtn;
+    public Button homeBtn;
 
     private void Awake()
     {
         Instance = this;
     }
-
+    private void Start()
+    {
+        restartBtn.onClick.AddListener(Restart);
+        homeBtn.onClick.AddListener(Home);
+    }
+    void Restart()
+    {
+        SceneManager.LoadScene("GamePlay");
+    }
+    void Home()
+    {
+        SceneManager.LoadScene("Home");
+    }
     public void UpdateScore(int score)
     {
         scoreText.text = "Score: " + score;
@@ -25,7 +43,17 @@ public class UIManager : MonoBehaviour
     {
         healthSlider.value = (float)current / max;
     }
-
+    public void UpdateWaveUI(int waveNumber)
+    {
+        waveNumberText.gameObject.SetActive(true);
+        waveNumberText.text =$"wavenumber: {waveNumber.ToString()}";
+        StartCoroutine(DelayDisableWaveTxt());
+    }
+    IEnumerator DelayDisableWaveTxt()
+    {
+        yield return new WaitForSeconds(2f);
+        waveNumberText.gameObject.SetActive(false);
+    }
     public void ShowGameOver(int score)
     {
         gameOverPanel.SetActive(true);

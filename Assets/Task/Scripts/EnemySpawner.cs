@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (!GameManager.Instance.isGameOver)
         {
-            int enemyCount = waveNumber + 2;
+            int enemyCount = waveNumber + 4;
 
             for (int i = 0; i < enemyCount; i++)
             {
@@ -29,8 +29,10 @@ public class EnemySpawner : MonoBehaviour
             }
 
             waveNumber++;
+            UIManager.Instance.UpdateWaveUI(waveNumber);
+            yield return new WaitForSeconds(2f);
             spawnDelay = Mathf.Max(0.5f, spawnDelay - 0.2f);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
         }
     }
 

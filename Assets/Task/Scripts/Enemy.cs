@@ -150,6 +150,7 @@ public class Enemy : MonoBehaviour
 
         if (m_Animation != null && attackClip != null)
         {
+            transform.LookAt(target.transform);
             Debug.Log("Attack animation play");
             m_Animation.Play(attackClip.name);
         }
