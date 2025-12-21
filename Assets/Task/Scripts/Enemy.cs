@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour
     [Header("Rotation Settings")]
     [SerializeField] private float rotationSpeed = 5f;
 
+    [Header("Attack Settings")]
+    private float attackCooldown = 2f;
+
     private Treasure target;
     private bool hasReachedTarget = false;
     private bool isAttacking = false;
@@ -44,11 +47,6 @@ public class Enemy : MonoBehaviour
             MoveTowardsTarget();
             RotateTowardsTarget();
             PlayWalkAnimation();
-        }
-        else if (hasReachedTarget)
-        {
-            RotateTowardsTarget();
-            PlayIdleAnimation();
         }
     }
 
@@ -140,7 +138,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Treasure") && !hasReachedTarget && !isDead)
         {
             hasReachedTarget = true;
-            PerformAttack();
+            InvokeRepeating(nameof(PerformAttack), 0f, attackCooldown);
         }
     }
 
@@ -152,6 +150,7 @@ public class Enemy : MonoBehaviour
 
         if (m_Animation != null && attackClip != null)
         {
+            Debug.Log("Attack animation play");
             m_Animation.Play(attackClip.name);
         }
 
