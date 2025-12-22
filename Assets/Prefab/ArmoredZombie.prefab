@@ -1105,6 +1105,7 @@ Animation:
   - {fileID: 7400000, guid: ec82f8817523b104a90d8631a4731fd2, type: 3}
   - {fileID: 7400000, guid: 36f951038cccf164c8901048aeb4fb9e, type: 3}
   - {fileID: 7400000, guid: 7e30c0d547cbe474aafed5082834440a, type: 2}
+  - {fileID: 7400000, guid: 7faf88e49093433448390b647cc1c46a, type: 3}
   - {fileID: 7400000, guid: 3d70d4e1320891e4ba93a693d355fa32, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
@@ -1126,6 +1127,7 @@ MonoBehaviour:
   idleClip: {fileID: 7400000, guid: ec82f8817523b104a90d8631a4731fd2, type: 3}
   walkClip: {fileID: 7400000, guid: 36f951038cccf164c8901048aeb4fb9e, type: 3}
   attackClip: {fileID: 7400000, guid: 7e30c0d547cbe474aafed5082834440a, type: 2}
+  hitClip: {fileID: 7400000, guid: 7faf88e49093433448390b647cc1c46a, type: 3}
   dieClip: {fileID: 7400000, guid: 3d70d4e1320891e4ba93a693d355fa32, type: 3}
   health: 3
   speed: 2

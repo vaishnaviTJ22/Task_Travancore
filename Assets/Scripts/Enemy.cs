@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AnimationClip idleClip;
     [SerializeField] private AnimationClip walkClip;
     [SerializeField] private AnimationClip attackClip;
+    [SerializeField] private AnimationClip hitClip;
     [SerializeField] private AnimationClip dieClip;
 
     [Header("Enemy Stats")]
@@ -110,6 +111,7 @@ public class Enemy : MonoBehaviour
         if (isDead) return;
 
         health -= damage;
+        m_Animation.Play(hitClip.name);
         if (health <= 0)
         {
             Die();
