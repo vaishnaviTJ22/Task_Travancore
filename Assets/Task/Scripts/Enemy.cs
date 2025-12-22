@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Treasure") && !hasReachedTarget && !isDead)
         {
             hasReachedTarget = true;
-           // InvokeRepeating(nameof(PerformAttack), 0f, attackCooldown);
+            InvokeRepeating(nameof(PerformAttack), 0f, attackCooldown);
         }
     }
 
@@ -160,7 +160,7 @@ public class Enemy : MonoBehaviour
         float attackDuration = attackClip != null ? attackClip.length : 1f;
         Invoke(nameof(ResetAttack), attackDuration);
     }
-    public void TakeDamage()
+    public void TreasureDamage()
     {
         if (target != null)
         {
