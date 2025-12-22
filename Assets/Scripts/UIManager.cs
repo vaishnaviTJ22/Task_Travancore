@@ -52,8 +52,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateWaveUI(int waveNumber)
     {
-        waveNumberText.gameObject.SetActive(true);
-        waveNumberText.text = $"wavenumber: {waveNumber.ToString()}";
+        waveNumberText.transform.parent.gameObject.SetActive(true);
+        waveNumberText.text = $"wave {waveNumber.ToString()}";
         Debug.Log("wave ui");
         StartCoroutine(DelayDisableWaveTxt());
     }
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("delay");
         yield return new WaitForSeconds(2f);
-        waveNumberText.gameObject.SetActive(false);
+        waveNumberText.transform.parent.gameObject.SetActive(false);
     }
 
     public void ShowGameOver(int score, int highScore)
