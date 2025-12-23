@@ -1,44 +1,136 @@
-🧟 Endless Zombie Survival
-A fast-paced, wave-based zombie survival game built with Unity for Android. Test your reflexes as you defend against increasingly challenging waves of zombies!
+🛡️ Endless Defence Game – Unity Machine Test
+📌 Project Overview
 
-🎮 Game Features
-Core Gameplay
-Endless Wave System - Survive increasingly difficult waves of zombies
-Two Enemy Types - Standard and Armored zombies with different health pools
-Progressive Difficulty - More enemies spawn each wave with reduced spawn delays
-Wave Completion - Next wave only starts after eliminating all enemies
-Visual & Audio Feedback
-Hit Effects - Particle system feedback on enemy hits
-Color Flash - Enemies flash red when damaged
-Knockback System - Satisfying physics-based knockback on hits
-Hit Animations - Smooth animation transitions for all enemy states
-User Interface
-Real-time Score Tracking - Points awarded for each enemy defeated
-Health System - Visual health bar for the treasure you're defending
-Wave Counter - Clear wave number display with transitions
-Game Over Screen - Retry and return to menu options
-🛠️ Technical Highlights
-Optimizations
-Object Pooling System - Efficient enemy reuse preventing garbage collection spikes
-Dynamic Pool Management - Automatically adjusts pool size based on wave requirements
-Capped Memory Usage - Maximum pool size prevents memory overflow
-Mobile-Optimized - Designed for smooth 60 FPS on mid-range Android devices
-Architecture
-Singleton Pattern - GameManager, UIManager, and PoolManager for easy access
-Component-Based Design - Modular scripts for maintainability
-Coroutine-Based Systems - Non-blocking wave spawning and UI animations
-Event-Driven Updates - Efficient UI updates only when needed
-🎯 How to Play
-Objective: Defend the treasure from zombie hordes
-Controls: Tap/Click on zombies to eliminate them
-Scoring: Earn points for each defeated enemy
-Waves: Clear all enemies to progress to the next wave
-Game Over: Occurs when treasure health reaches zero
-🔧 Built With
-Unity Version: 2022.3 LTS
-Platform: Android (API Level 21+)
-Scripting: C#
-Rendering: Built-in Render Pipeline
-UI: Unity UI (uGUI)
-Particle System: Unity Particle System
-Animation: Legacy Animation System
+This project is a simple 3D endless defence game prototype developed using Unity, where the player must protect a central treasure/core from continuously spawning enemies.
+
+Enemies approach the core in waves, and the player eliminates them using mouse clicks / screen taps.
+The game ends when the treasure’s health reaches zero.
+
+The focus of this project is on clean architecture, gameplay logic, scalability, and performance optimization, rather than art or complex mechanics.
+
+🎮 Gameplay Mechanics
+
+A central treasure is placed in the arena
+
+Enemies spawn in progressive waves
+
+Enemies move toward the treasure
+
+Player destroys enemies by clicking/tapping on them
+
+Each enemy reaching the treasure reduces its health
+
+Game ends when treasure health becomes zero
+
+Score increases for each enemy destroyed
+
+👾 Enemy Types
+🔹 Standard Enemy
+
+Destroyed with a single tap
+
+Faster movement speed
+
+Lower score value
+
+🔹 Armored Enemy
+
+Requires multiple taps to destroy
+
+Slower but tougher
+
+Higher score value
+
+Different death animation
+
+
+🌊 Wave & Difficulty System
+
+Wave number increases progressively
+
+Enemy count increases every wave
+
+Only the additional enemies required for the next wave are spawned
+
+Existing enemies persist between waves
+
+Spawn delay reduces gradually to increase difficulty
+
+Wave number is displayed on the UI at the start of each wave
+
+🚀 Performance Optimization
+✅ Object Pooling
+
+Implemented object pooling for enemies
+
+Avoids frequent Instantiate() and Destroy()
+
+Enemies are reused from the pool
+
+Pool expands dynamically only when required
+
+Optimized for mobile and low-end devices
+
+🧱 Architecture & Code Design
+
+Modular and readable C# scripts
+
+No monolithic scripts
+
+Clear separation of responsibilities
+
+Key Design Patterns Used:
+
+Inheritance (Enemy base class)
+
+Polymorphism (different enemy behaviors)
+
+Object Pooling
+
+Coroutine-based wave handling
+
+Core Scripts:
+
+GameManager – Game state & score handling
+
+EnemySpawner – Wave logic & incremental spawning
+
+Enemy (abstract) – Shared enemy behavior
+
+StandardEnemy, ArmoredEnemy – Specific enemy logic
+
+EnemyPoolManager – Object pooling system
+
+Treasure – Health & damage handling
+
+UIManager – UI updates (score, wave, game over)
+
+🖥️ User Interface
+
+Score counter
+
+Treasure health bar
+
+Wave number display
+
+Game Over screen with final score
+
+UI is kept minimal and readable for both PC and mobile simulation.
+
+🎯 Controls
+
+Mouse Click (PC)
+
+Screen Tap (Mobile simulation)
+
+No complex controls are used as per the test requirements.
+
+🛠️ Tools & Technologies
+
+Unity Engine
+
+C#
+
+Unity UI System
+
+Git for version contro
