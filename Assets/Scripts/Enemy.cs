@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Hit Feedback")]
     [SerializeField] private GameObject hitEffectPrefab;
+    [SerializeField] private AudioClip hitSoundEffect;
     [SerializeField] private float knockbackForce = 0.5f;
 
     protected int health;
@@ -142,6 +144,7 @@ public class Enemy : MonoBehaviour
         PlayHitAnimation();
         SpawnHitEffect();
         ApplyKnockback();
+        SpawnSoundEffect();
     }
 
     private void PlayHitAnimation()
@@ -162,7 +165,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-  
+    private void SpawnSoundEffect()
+    {
+        AudioSource.PlayClipAtPoint(hitSoundEffect,transform.position,1f);
+    }
    
 
     private void ApplyKnockback()
@@ -174,7 +180,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(KnockbackCoroutine(knockbackTarget));
     }
 
-    private System.Collections.IEnumerator KnockbackCoroutine(Vector3 targetPosition)
+    private IEnumerator KnockbackCoroutine(Vector3 targetPosition)
     {
         float elapsed = 0f;
         float duration = 0.15f;

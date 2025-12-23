@@ -62,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
         while (EnemyPoolManager.Instance.ActiveEnemyCount() > 0)
         {
             if (GameManager.Instance.isGameOver) break;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         Debug.Log("All enemies defeated! Preparing next wave...");
