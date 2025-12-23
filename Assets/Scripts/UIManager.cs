@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     public Button restartBtn;
     public Button homeBtn;
 
+    private Coroutine waveTextCoroutine;
+
     private void Awake()
     {
         Instance = this;
@@ -37,12 +39,13 @@ public class UIManager : MonoBehaviour
 
     void Home()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Home");
     }
 
     public void UpdateScore(int score)
     {
-        scoreText.text =  score.ToString();
+        scoreText.text = score.ToString();
     }
 
     public void UpdateHealthBar(int current, int max)
@@ -52,21 +55,42 @@ public class UIManager : MonoBehaviour
 
     public void UpdateWaveUI(int waveNumber)
     {
+        if (GameManager.Instance.isGameOver) return;
+
+        if (waveTextCoroutine != null)
+        {
+            StopCoroutine(waveTextCoroutine);
+        }
+
         waveNumberText.transform.parent.gameObject.SetActive(true);
         waveNumberText.text = $"wave {waveNumber.ToString()}";
         Debug.Log("wave ui");
-        StartCoroutine(DelayDisableWaveTxt());
+        waveTextCoroutine = StartCoroutine(DelayDisableWaveTxt());
     }
 
     IEnumerator DelayDisableWaveTxt()
     {
         Debug.Log("delay");
         yield return new WaitForSeconds(2f);
-        waveNumberText.transform.parent.gameObject.SetActive(false);
+
+        if (!GameManager.Instance.isGameOver)
+        {
+            waveNumberText.transform.parent.gameObject.SetActive(false);
+        }
+
+        waveTextCoroutine = null;
     }
 
     public void ShowGameOver(int score, int highScore)
     {
+        if (waveTextCoroutine != null)
+        {
+            StopCoroutine(waveTextCoroutine);
+            waveTextCoroutine = null;
+        }
+
+        waveNumberText.transform.parent.gameObject.SetActive(false);
+
         gameOverPanel.SetActive(true);
         finalScoreText.text = "Final Score: " + score;
         highScoreText.text = "High Score: " + highScore;
